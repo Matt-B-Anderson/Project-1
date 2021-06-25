@@ -1,0 +1,156 @@
+/*Login      */
+header {
+  width: 95vw;
+  display: grid;
+  justify-content: end;
+}
+
+input[type="text"],
+select,
+textarea {
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+/* Style the submit button with a specific background color etc */
+input[type="submit"] {
+  background-color: #04aa6d;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Add a background color and some padding around the form */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.login {
+  width: 382px;
+  overflow: hidden;
+  margin: auto;
+  margin: 20 0 0 450px;
+  padding: 80px;
+  background-color: #4f5d75;
+}
+
+.login__container {
+  background-color: #2d3142;
+  border: 0;
+  margin: 0;
+}
+.login__header {
+  text-align: center;
+  color: #bfc0c0;
+  padding: 20px;
+}
+
+.login__label {
+  color: #bfc0c0;
+  font-size: 17px;
+}
+
+.login__link {
+  float: right;
+  background-color: white;
+}
+
+.employee__container {
+  background-color: #ef8354;
+  border: 0;
+  margin: 0;
+}
+
+.employee {
+  width: 382px;
+  overflow: hidden;
+  margin: auto;
+  margin: 20 0 0 450px;
+  padding: 80px;
+  background-color: #2d3142;
+}
+
+.employee__header {
+  text-align: center;
+  color: #2d3142;
+  padding: 20px;
+}
+
+#username {
+  width: 300px;
+  height: 30px;
+  border: none;
+  border-radius: 3px;
+  padding-left: 8px;
+}
+
+#password {
+  width: 300px;
+  height: 30px;
+  border: none;
+  border-radius: 3px;
+  padding-left: 8px;
+}
+
+#login-button {
+  width: 300px;
+  height: 30px;
+  border: none;
+  border-radius: 17px;
+  padding-left: 7px;
+  color: #ef8354;
+}
+
+/* Author */
+.hidden {
+  display: none;
+}
+
+.add-story__btn {
+  width: 300px;
+  height: 30px;
+  border: none;
+  border-radius: 17px;
+  padding-left: 7px;
+  color: #2d3142;
+  background-color: #ef8354;
+}
+
+/* Stories */
+
+.sto-box {
+  color: whitesmoke;
+  background-color: rgb(75, 139, 99);
+  border-radius: 8px;
+}
+
+/* status */
+
+.sta-box {
+  color: whitesmoke;
+  background-color: grey;
+  border-radius: 8px;
+}
+
+/* Approval */
+
+.app-box {
+  color: whitesmoke;
+  background-color: #350000;
+  border-radius: 8px;
+}

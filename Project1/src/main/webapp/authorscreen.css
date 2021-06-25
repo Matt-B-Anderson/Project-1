@@ -1,0 +1,24 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  color: white;
+  background-color: gray;
+}
+
+header {
+  width: 100vw;
+  display: grid;
+  justify-content: end;
+}
+
+p {
+  color: #350000;
+  margin-bottom: 2px;
+}
+
+.genre {
+  margin-top: 2px;
+}

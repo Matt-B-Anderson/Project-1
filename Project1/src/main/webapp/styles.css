@@ -1,0 +1,48 @@
+body {
+  justify-content: center;
+  display: grid;
+  grid-auto-flow: row;
+  background-color: grey;
+}
+
+.auth-container {
+  background: #350000;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 500px;
+  border-radius: 8px;
+}
+
+.auth-container input {
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.auth-container button {
+  margin: 16px 8px;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.auth-container a {
+  color: #350000;
+  text-decoration: none;
+  margin: 16px 8px;
+  padding: 8px;
+  border-color: gray;
+  border-style: solid;
+  border-radius: 4px;
+  background-color: gray;
+}
+
+.auth-container h3 {
+  color: whitesmoke;
+}
+.auth-container h2 {
+  color: whitesmoke;
+}
+
+.empty-container {
+  margin: 100px;
+}
