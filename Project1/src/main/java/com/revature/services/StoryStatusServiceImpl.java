@@ -8,7 +8,7 @@ public class StoryStatusServiceImpl implements StoryStatusService {
 
 	@Override
 	public Status updateStatus(Status st) {
-		stdao.uptate(st);
+		stdao.update(st);
 		return stdao.getById(st.getId());
 	}
 

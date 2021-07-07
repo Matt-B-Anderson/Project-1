@@ -20,7 +20,7 @@ public class StoryServiceImpl implements StoryService {
 
 	@Override
 	public Story updateStory(Story s) {
-		stdao.uptate(s);
+		stdao.update(s);
 		return stdao.getById(s.getId());
 	}
 

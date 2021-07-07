@@ -78,7 +78,7 @@ public class AuthorDAO implements GenericDAO<Author> {
 	}
 
 	@Override
-	public void uptate(Author a) {
+	public void update(Author a) {
 		String sql = "update authors set author_points =? where author_id =?;";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);

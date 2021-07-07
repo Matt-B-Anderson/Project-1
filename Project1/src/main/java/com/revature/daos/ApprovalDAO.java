@@ -46,7 +46,7 @@ public class ApprovalDAO implements GenericDAO<Approval> {
 	}
 
 	@Override
-	public void uptate(Approval a) {
+	public void update(Approval a) {
 		String sql = "update approval set approval_status = ?, approval_info= ?, number_of_approves = ? where approval_id = ?;";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);

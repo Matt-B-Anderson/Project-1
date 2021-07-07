@@ -51,7 +51,7 @@ public class StatusDAO implements GenericDAO<Status> {
 	}
 
 	@Override
-	public void uptate(Status st) {
+	public void update(Status st) {
 		String sql = "Update statuses set status =?, priority = ?, status_date = ?,  general_info = ?, author_info = ?, assitant_info = ? where story_status_id = ?;";
 
 		try {

@@ -6,7 +6,7 @@ public class Story {
 	private String title;
 	private String tagline;
 	private String description;
-	private String completion_date;
+	private String submit_date;
 	private String genre;
 	private String story_type;
 	private Status story_status;
@@ -17,14 +17,14 @@ public class Story {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Story(Integer id, String title, String tagline, String description, String completion_date, String genre,
+	public Story(Integer id, String title, String tagline, String description, String submit_date, String genre,
 			String story_type, Status story_status, Integer aurthor_id) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.tagline = tagline;
 		this.description = description;
-		this.completion_date = completion_date;
+		this.submit_date = submit_date;
 		this.genre = genre;
 		this.story_type = story_type;
 		this.story_status = story_status;
@@ -63,12 +63,12 @@ public class Story {
 		this.description = description;
 	}
 
-	public String getCompletion_date() {
-		return completion_date;
+	public String getSubmit_date() {
+		return submit_date;
 	}
 
-	public void setCompletion_date(String completion_date) {
-		this.completion_date = completion_date;
+	public void setSubmit_date(String submit_date) {
+		this.submit_date = submit_date;
 	}
 
 	public String getGenre() {
@@ -108,12 +108,12 @@ public class Story {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((aurthor_id == null) ? 0 : aurthor_id.hashCode());
-		result = prime * result + ((completion_date == null) ? 0 : completion_date.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((genre == null) ? 0 : genre.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((story_status == null) ? 0 : story_status.hashCode());
 		result = prime * result + ((story_type == null) ? 0 : story_type.hashCode());
+		result = prime * result + ((submit_date == null) ? 0 : submit_date.hashCode());
 		result = prime * result + ((tagline == null) ? 0 : tagline.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
@@ -132,11 +132,6 @@ public class Story {
 			if (other.aurthor_id != null)
 				return false;
 		} else if (!aurthor_id.equals(other.aurthor_id))
-			return false;
-		if (completion_date == null) {
-			if (other.completion_date != null)
-				return false;
-		} else if (!completion_date.equals(other.completion_date))
 			return false;
 		if (description == null) {
 			if (other.description != null)
@@ -163,6 +158,11 @@ public class Story {
 				return false;
 		} else if (!story_type.equals(other.story_type))
 			return false;
+		if (submit_date == null) {
+			if (other.submit_date != null)
+				return false;
+		} else if (!submit_date.equals(other.submit_date))
+			return false;
 		if (tagline == null) {
 			if (other.tagline != null)
 				return false;
@@ -179,8 +179,8 @@ public class Story {
 	@Override
 	public String toString() {
 		return "Story [id=" + id + ", title=" + title + ", tagline=" + tagline + ", description=" + description
-				+ ", completion_date=" + completion_date + ", genre=" + genre + ", story_type=" + story_type
-				+ ", story_status=" + story_status + ", aurthor_id=" + aurthor_id + "]";
+				+ ", submit_date=" + submit_date + ", genre=" + genre + ", story_type=" + story_type + ", story_status="
+				+ story_status + ", aurthor_id=" + aurthor_id + "]";
 	}
 
 }

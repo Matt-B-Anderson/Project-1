@@ -21,7 +21,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Employee updateEmployee(Employee e) {
-		edao.uptate(e);
+		edao.update(e);
 		return edao.getById(e.getId());
 	}
 

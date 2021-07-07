@@ -32,7 +32,7 @@ function addStory(e) {
     title: e.target["title"].value,
     tagline: e.target["tagline"].value,
     description: e.target["description"].value,
-    completion_date: e.target["date"].value,
+    submit_date: e.target["date"].value,
     genre: e.target["genre"].value,
     story_type: e.target["type"].value,
     story_status: {
@@ -139,8 +139,39 @@ const getStory = () => {
 window.onload = getStory();
 
 function populateData(at) {
+  console.log(at);
   let storySection = document.getElementById("stories");
 
+  let selectStoryType = document.getElementById("story-type");
+
+  // Populate StoryType options
+  let pts = at.points;
+  console.log(pts);
+  if (pts >= 50) {
+    let novel = document.createElement("option");
+    novel.innerHTML = "Novel(101+ Pages) ";
+    novel.setAttribute("value", "novel");
+    selectStoryType.appendChild(novel);
+  }
+
+  if (pts >= 25) {
+    let novella = document.createElement("option");
+    novella.innerHTML = "Novella(11-100 Pages) ";
+    novella.setAttribute("value", "novella");
+    selectStoryType.appendChild(novella);
+  }
+  if (pts >= 20) {
+    let shortStory = document.createElement("option");
+    shortStory.innerHTML = "Short-Story(2-10 Pages) ";
+    shortStory.setAttribute("value", "short-story");
+    selectStoryType.appendChild(shortStory);
+  }
+  if (pts >= 10) {
+    let article = document.createElement("option");
+    article.innerHTML = "Article(1-2 Pages) ";
+    article.setAttribute("value", "article");
+    selectStoryType.appendChild(article);
+  }
   // Author Welcome
   let authorWelcome = document.createElement("h2");
   authorWelcome.innerHTML = "Welcome, " + at.firstname + " " + at.lastname + "!";
@@ -186,7 +217,7 @@ function populateData(at) {
 
     // Story completionDate
     let stoCompletionDate = document.createElement("p");
-    stoCompletionDate.innerHTML = "Submit Date: " + " " + st.completion_date;
+    stoCompletionDate.innerHTML = "Submit Date: " + " " + st.submit_date;
     stoCompletionDate.setAttribute("class", "sto-completion-date");
     stoBox.appendChild(stoCompletionDate);
 
@@ -232,20 +263,12 @@ function populateData(at) {
     staDate.setAttribute("class", "sto-completion-date");
     staBox.appendChild(staDate);
 
-    //Assistant Info
-    if (sta.assistantInfo != null) {
-      let staAssistantInfo = document.createElement("p");
-      staAssistantInfo.innerHTML = sta.assistant_info;
-      staAssistantInfo.setAttribute("class", "sto-description");
-      staBox.appendChild(staAssistantInfo);
-    }
-
-    //General Info
-    if (sta.generalInfo != null) {
-      let staGeneralInfo = document.createElement("p");
-      staGeneralInfo.innerHTML = sta.general_info;
-      staGeneralInfo.setAttribute("class", "sto-description");
-      staBox.appendChild(staGeneralInfo);
+    //Author Info
+    if (sta.author_info != null) {
+      let staAuthorInfo = document.createElement("p");
+      staAuthorInfo.innerHTML = sta.author_info;
+      staAuthorInfo.setAttribute("class", "sto-description");
+      staBox.appendChild(staAuthorInfo);
     }
 
     //--------------------------------------

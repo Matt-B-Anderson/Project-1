@@ -8,7 +8,7 @@ public class ApprovalServiceImpl implements ApprovalService {
 
 	@Override
 	public Approval updateApproval(Approval app) {
-		apDao.uptate(app);
+		apDao.update(app);
 		return apDao.getById(app.getId());
 	}
 

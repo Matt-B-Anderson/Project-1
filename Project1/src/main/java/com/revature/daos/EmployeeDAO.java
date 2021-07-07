@@ -208,7 +208,7 @@ public class EmployeeDAO implements GenericDAO<Employee> {
 	}
 
 	@Override
-	public void uptate(Employee e) {
+	public void update(Employee e) {
 		String sql = "update employees set story = ?, story2 = ?, story3 = ? where employee_id =?;";
 		try {
 			Integer storyId = 0;

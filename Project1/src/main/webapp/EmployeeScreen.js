@@ -27,7 +27,6 @@ const getStory = () => {
 
 let penBtn = document.getElementById("austat");
 penBtn.addEventListener("submit", (ev) => {
-  console.log(ev);
   updateStatus(ev);
 });
 
@@ -111,7 +110,7 @@ function populateData(em) {
 
     // Story completionDate
     let stoCompletionDate = document.createElement("p");
-    stoCompletionDate.innerHTML = "Submit Date: " + st.completionDate;
+    stoCompletionDate.innerHTML = "Submit Date: " + st.submit_date;
     stoCompletionDate.setAttribute("class", "sto-completion-date");
     stoBox.appendChild(stoCompletionDate);
 
@@ -136,6 +135,67 @@ function populateData(em) {
     stoWeight.innerHTML = "Type: " + " " + nstoryType;
     stoWeight.setAttribute("class", "sto-genre");
     stoBox.appendChild(stoWeight);
+
+    //Senior Editor Edit Story form
+    console.log(st);
+    if (em.type === "senior" && st.story_type == 1) {
+      let editForm = document.createElement("form");
+      editForm.setAttribute("id", "editForm");
+      editForm.setAttribute("name", "eForm");
+      editForm.addEventListener("submit", (e) => updateStory(e, st));
+      stoBox.appendChild(editForm);
+
+      let newTitle = document.createElement("input");
+      newTitle.setAttribute("type", "text");
+      newTitle.setAttribute("id", "titleInput");
+      newTitle.setAttribute("placeholder", "New Title:");
+      newTitle.setAttribute("name", "tInput");
+      editForm.appendChild(newTitle);
+
+      let newTagline = document.createElement("input");
+      newTagline.setAttribute("type", "text");
+      newTagline.setAttribute("id", "taglineInput");
+      newTagline.setAttribute("placeholder", "New Tagline:");
+      newTagline.setAttribute("name", "tagInput");
+      editForm.appendChild(newTagline);
+
+      let newDesc = document.createElement("textarea");
+      newDesc.setAttribute("cols", 30);
+      newDesc.setAttribute("rows", 5);
+      newDesc.setAttribute("placeholder", "Type New Description Here:");
+      newDesc.setAttribute("name", "dInput");
+      newDesc.setAttribute("id", "descInput");
+      editForm.appendChild(newDesc);
+
+      let editbtn = document.createElement("button");
+      editbtn.innerHTML = "Update Story";
+      editbtn.setAttribute("type", "submit");
+      editbtn.setAttribute("id", "editbtn");
+      editbtn.setAttribute("class", "login_link");
+      editForm.appendChild(editbtn);
+    }
+
+    //Request Additional Info
+    let infoForm = document.createElement("form");
+    infoForm.setAttribute("id", "infoForm");
+    infoForm.setAttribute("name", "iForm");
+    infoForm.addEventListener("submit", (e) => updateStatusInfo(e, st));
+    stoBox.appendChild(infoForm);
+
+    let info = document.createElement("textarea");
+    info.setAttribute("cols", 30);
+    info.setAttribute("rows", 5);
+    info.setAttribute("placeholder", "Request Info Here:");
+    info.setAttribute("name", "infoText");
+    info.setAttribute("id", "info");
+    infoForm.appendChild(info);
+
+    let infobtn = document.createElement("button");
+    infobtn.innerHTML = "Request Info";
+    infobtn.setAttribute("type", "submit");
+    infobtn.setAttribute("class", "login_link");
+    infobtn.setAttribute("id", "infobtn");
+    infoForm.appendChild(infobtn);
 
     // -----------------------------------------
     // Status Object
@@ -172,20 +232,13 @@ function populateData(em) {
     staDate.setAttribute("class", "sto-completion-date");
     staBox.appendChild(staDate);
 
-    //Assistant Info
-    if (sta.assistantInfo != null) {
-      let staAssistantInfo = document.createElement("p");
-      staAssistantInfo.innerHTML = sta.assistant_info;
-      staAssistantInfo.setAttribute("class", "sto-description");
-      staBox.appendChild(staAssistantInfo);
-    }
-
-    //General Info
-    if (sta.generalInfo != null) {
-      let staGeneralInfo = document.createElement("p");
-      staGeneralInfo.innerHTML = sta.general_info;
-      staGeneralInfo.setAttribute("class", "sto-description");
-      staBox.appendChild(staGeneralInfo);
+    console.log(`${em.type} does exist`);
+    //Requested Info
+    if (sta.author_info != null) {
+      let staAuthorInfo = document.createElement("p");
+      staAuthorInfo.innerHTML = `Requested Info: ${sta.author_info}`;
+      staAuthorInfo.setAttribute("class", "sto-description");
+      staBox.appendChild(staAuthorInfo);
     }
 
     // Status Approve Button
@@ -288,6 +341,68 @@ function populateData(em) {
     stoBox.appendChild(staBox);
     storySection.appendChild(stoBox);
   });
+}
+
+function updateStory(e, st) {
+  e.preventDefault();
+  console.log("HIT");
+  let ust = st;
+  utitle = e.target["tInput"].value;
+  utagline = e.target["tagInput"].value;
+  udescription = e.target["dInput"].value;
+
+  ust["title"] = utitle;
+  ust["tagline"] = utagline;
+  ust["description"] = udescription;
+
+  let jst = JSON.stringify(ust);
+
+  let xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = postStatus;
+  xhttp.open("POST", URL + "/update-story", true);
+  console.log(jst);
+  xhttp.send(jst);
+
+  function postStatus() {
+    if (xhttp.readyState == 4) {
+      if (xhttp.status == 200) {
+        alert("Story Updated. Changes will be visible on next Log-In");
+      } else {
+        // Ready state is done but status code is not "Ok"
+      }
+    } else {
+      // error handling
+    }
+  }
+}
+
+function updateStatusInfo(e, st) {
+  e.preventDefault();
+  let sta = st.story_status;
+  console.log(sta);
+
+  usta = e.target["infoText"].value;
+  sta["author_info"] = usta;
+
+  let jsta = JSON.stringify(sta);
+
+  let xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = postStatus;
+  xhttp.open("POST", URL + "/update-status", true);
+  console.log(jsta);
+  xhttp.send(jsta);
+
+  function postStatus() {
+    if (xhttp.readyState == 4) {
+      if (xhttp.status == 200) {
+        alert("Status updated. Changes will be visible on next Log-In");
+      } else {
+        // Ready state is done but status code is not "Ok"
+      }
+    } else {
+      // error handling
+    }
+  }
 }
 
 function updateStatus(ev) {

@@ -8,7 +8,7 @@ public class AuthorServiceImpl implements AuthorService {
 
 	@Override
 	public Author updateAuthor(Author a) {
-		adao.uptate(a);
+		adao.update(a);
 		return adao.getById(a.getId());
 	}
 

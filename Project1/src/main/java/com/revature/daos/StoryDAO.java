@@ -27,7 +27,7 @@ public class StoryDAO implements GenericDAO<Story> {
 			ps.setString(1, s.getTitle());
 			ps.setString(2, s.getTagline());
 			ps.setString(3, s.getDescription());
-			ps.setString(4, s.getCompletion_date());
+			ps.setString(4, s.getSubmit_date());
 
 			switch (sGenre) {
 			case "Fantasy":
@@ -116,7 +116,7 @@ public class StoryDAO implements GenericDAO<Story> {
 				s.setTitle(rs.getString("story_title"));
 				s.setTagline(rs.getString("story_tagline"));
 				s.setDescription(rs.getString("story_description"));
-				s.setCompletion_date(rs.getString("story_submit_date"));
+				s.setSubmit_date(rs.getString("story_submit_date"));
 				s.setGenre(rs.getString("genre"));
 				s.setStory_type(rs.getString("story_type"));
 				s.setAurthor_id(rs.getInt("author_id"));
@@ -135,15 +135,15 @@ public class StoryDAO implements GenericDAO<Story> {
 	}
 
 	@Override
-	public void uptate(Story s) {
-		String sql = "update stories set title = ?, tagline = ?, description = ?, completion_date = ?;";
+	public void update(Story s) {
+		String sql = "update stories set story_title = ?, story_tagline = ?, story_description = ? where story_id =?;";
 		try {
 
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, s.getTitle());
 			ps.setString(2, s.getTagline());
 			ps.setString(3, s.getDescription());
-			ps.setString(4, s.getCompletion_date());
+			ps.setInt(4, s.getId());
 
 			ps.executeUpdate();
 
@@ -170,7 +170,7 @@ public class StoryDAO implements GenericDAO<Story> {
 				s.setTitle(rs.getString("story_title"));
 				s.setTagline(rs.getString("story_tagline"));
 				s.setDescription(rs.getString("story_description"));
-				s.setCompletion_date(rs.getString("story_submit_date"));
+				s.setSubmit_date(rs.getString("story_submit_date"));
 				s.setGenre(rs.getString("genre"));
 				s.setStory_type(rs.getString("story_type"));
 				s.setAurthor_id(rs.getInt("author_id"));
