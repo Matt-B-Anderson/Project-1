@@ -1,6 +1,6 @@
 # Story Pitch Management System - README
 
-### Dan Felleman - 2101 Java w/ETL - Project 1
+### Matt Anderson - 2105 Java w/MSA - Project 1
 
 > This Project was completed to fulfill the requirements of Project 1 during Training at Revature LLC.
 >
